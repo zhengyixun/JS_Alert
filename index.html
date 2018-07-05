@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>jQuery弹出确认提示框插件zdialog - 站长素材</title>
+
+<link type="text/css" rel="stylesheet"  href="css/reset.css" />
+<link type="text/css"  rel="stylesheet" href="css/style.css" />
+<!--弹出层 开始 -->
+<link type="text/css" rel="stylesheet" href="css/zdialog.css" />
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/zdialog.js"></script>
+<!--弹出层 结束 -->
+
+</head>
+<body>
+
+<div class="mui-content-padded" style="text-align: center;">
+	<button id="alertBtn" type="button" class="zbox-btn zbox-btn-blue zbox-btn-outlined">警告消息框</button>
+	<button id="confirmBtn" type="button" class="zbox-btn zbox-btn-blue zbox-btn-outlined">确认消息框</button>
+	<button id="toastBtn" type="button" class="zbox-btn zbox-btn-blue zbox-btn-outlined">自动消失提示框</button>
+	<button id="load" type="button" class="zbox-btn zbox-btn-blue zbox-btn-outlined">加载中</button>
+	<div id="info" onclick="$.DialogByZ.Close()">关闭加载</div>
+</div>
+
+<script>
+///
+   $("#alertBtn").click(function(){
+	   $.DialogByZ.Alert({Title: "提示", Content: "您的请求失败",BtnL:"确定",FunL:alerts}) 
+   })
+   $("#confirmBtn").click(function(){
+	   $.DialogByZ.Confirm({Title: "", Content: "投资前需开通第三方存管账户</br>确保资金安全",FunL:confirmL,FunR:Immediate})
+   })
+   $("#toastBtn").click(function(){
+	  $.DialogByZ.Autofade({Content: "感谢您对我们的支持"})
+   })
+   $("#load").click(function(){
+	  $.DialogByZ.Loading('image/loading.png') 
+   })
+///
+   function confirmL(){
+			$.DialogByZ.Close();
+			$.DialogByZ.Alert({Title: "提示", Content: "您要求稍后开通",BtnL:"确定"})
+   }
+   //
+   function alerts(){
+
+	  $.DialogByZ.Close();
+   }
+   function Immediate(){
+	  //location.href="http://sc.chinaz.com/jiaoben/"
+	  window.open("http://sc.chinaz.com/jiaoben/")
+   }
+   
+
+</script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
+<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+</div>
+</body>
+</html>
+
